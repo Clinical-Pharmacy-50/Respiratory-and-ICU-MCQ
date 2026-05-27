@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All MCQ Respiratory and ICU</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --text-dark: #1e293b;
+            --text-light: #475569;
+            --primary: #2563eb;
+            --correct: #10b981;
+            --wrong: #ef4444;
+            --orange: #f59e0b;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0; padding: 20px; 
+            min-height: 100vh;
+            display: flex; justify-content: center; align-items: center;
+            background: linear-gradient(-45deg, #00b4db, #0083b0, #0f2027, #203a43, #2c5364);
+            background-size: 400% 400%;
+            animation: fluidBG 15s ease infinite;
+            color: var(--text-dark);
+            position: relative; overflow-x: hidden; padding-bottom: 70px;
+        }
+
+        @keyframes fluidBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Best Wishes Centered at the top */
+        .brand-watermark {
+            font-size: 18px; font-weight: 600; font-style: italic; letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            position: absolute; top: 25px; left: 50%; transform: translateX(-50%);
+            z-index: 0;
+        }
+
+        /* Main Glass Container */
+        .glass-container {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            width: 100%; max-width: 700px; padding: 35px;
+            border-radius: 24px;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
+            text-align: center; z-index: 10; margin-top: 60px;
+            animation: popIn 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.95) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        /* Context Header & History Pill */
+        .context-wrapper { display: flex; justify-content: center; gap: 10px; align-items: center; margin-bottom: 25px; }
+        .context-header {
+            font-size: 13px; font-weight: 800; color: white;
+            background: linear-gradient(135deg, var(--primary), #3b82f6);
+            padding: 6px 16px; border-radius: 20px; display: inline-block;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3); letter-spacing: 1px;
+        }
+        .history-pill {
+            background: rgba(255, 255, 255, 0.3); color: var(--text-dark);
+            border: 1px solid rgba(255, 255, 255, 0.5); cursor: pointer;
+            transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .history-pill:hover { background: rgba(255, 255, 255, 0.5); transform: translateY(-2px); color: var(--primary); }
+
+        h1 { font-size: 26px; margin-bottom: 25px; font-weight: 800; color: var(--text-dark); text-transform: uppercase;}
+
+        .instructions-box {
+            background: rgba(255, 255, 255, 0.6); border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 16px; padding: 20px; margin-bottom: 25px; text-align: left; direction: ltr;
+            box-shadow: inset 0 0 10px rgba(255,255,255,0.5);
+        }
+        .instructions-box h3 { margin-top: 0; font-size: 18px; color: var(--primary); border-bottom: 2px solid rgba(0,0,0,0.05); padding-bottom: 8px; margin-bottom: 12px; }
+        .instructions-box ul { list-style: none; padding: 0; margin: 0; font-size: 15px; line-height: 1.8; color: var(--text-light); }
+
+        .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 15px; }
+
+        .glass-btn {
+            width: 100%; padding: 18px 10px; margin-bottom: 12px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+            color: var(--text-dark); border: 1px solid rgba(255,255,255,1);
+            border-radius: 16px; font-size: 16px; font-weight: 800; cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .glass-btn:hover { background: linear-gradient(135deg, #ffffff, #f1f5f9); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); color: var(--primary); }
+        .glass-btn:active { transform: scale(0.98); }
+
+        .btn-action { background: linear-gradient(135deg, var(--primary), #3b82f6); color: white; border: none; }
+        .btn-action:hover { background: linear-gradient(135deg, #1d4ed8, #2563eb); color: white; }
+        .btn-orange { background: linear-gradient(135deg, var(--orange), #f59e0b); color: white; border:none;}
+        .btn-orange:hover { background: linear-gradient(135deg, #d97706, #ea580c); color:white;}
+        .btn-back { background: rgba(148, 163, 184, 0.3); color: var(--text-dark); border:none; margin-top: 10px;}
+        .btn-back:hover { background: rgba(148, 163, 184, 0.5); color: var(--text-dark); }
+        
+        .btn-exit { background: rgba(239, 68, 68, 0.1); color: var(--wrong); border: 2px solid var(--wrong); padding: 8px 16px; border-radius: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .btn-exit:hover { background: var(--wrong); color: white; }
+
+        .screen { display: none; animation: fadeIn 0.4s ease; }
+        .screen.active { display: block; }
+
+        .progress-container { width: 100%; background: rgba(0,0,0,0.05); border-radius: 20px; margin-bottom: 20px; height: 10px; overflow: hidden; box-shadow: inset 0 2px 5px rgba(0,0,0,0.05); }
+        .progress-bar { height: 100%; background: linear-gradient(90deg, #34d399, #10b981); width: 0%; transition: width 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); }
+        
+        .header-info { display: flex; justify-content: space-between; align-items: center; font-size: 16px; font-weight: 800; color: var(--text-light); margin-bottom: 20px; border-bottom: 2px solid rgba(0,0,0,0.05); padding-bottom: 12px; }
+        .question-text { font-size: 20px; font-weight: 800; margin-bottom: 25px; text-align: left; color: var(--text-dark); line-height: 1.6; }
+
+        .options-container { display: flex; flex-direction: column; gap: 12px; }
+        .option-btn {
+            padding: 16px; background: rgba(255,255,255,0.5); color: var(--text-dark); text-align: left;
+            border: 2px solid rgba(0,0,0,0.05); border-radius: 14px; font-size: 16px; cursor: pointer;
+            transition: all 0.2s ease; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+        .option-btn:hover:not(:disabled) { background: white; border-color: var(--primary); transform: translateX(5px); }
+        .correct { background: var(--correct) !important; color: white !important; border-color: var(--correct) !important; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3) !important; }
+        .wrong { background: var(--wrong) !important; color: white !important; border-color: var(--wrong) !important; box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3) !important; }
+
+        .sim-question-block { background: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,1); border-radius: 16px; padding: 25px; margin-bottom: 25px; box-shadow: 0 8px 20px rgba(0,0,0,0.03); }
+
+        .feedback-msg { display: none; font-size: 16px; font-weight: 800; margin-top: 20px; padding: 16px; border-radius: 12px; text-align:center; animation: fadeIn 0.4s; }
+        .msg-correct { background: rgba(16, 185, 129, 0.1); color: var(--correct); border: 1px solid rgba(16, 185, 129, 0.3); }
+        .msg-wrong { background: rgba(239, 68, 68, 0.1); color: var(--wrong); border: 1px solid rgba(239, 68, 68, 0.3); }
+        .keyword-box { display: block; margin-top: 12px; padding: 12px; background: white; border-radius: 8px; color: var(--primary); font-size: 15px; text-align: left; border: 1px dashed var(--wrong); direction: ltr;}
+
+        .quiz-nav-buttons { display: flex; gap: 15px; margin-top: 20px; width: 100%; }
+        .quiz-nav-buttons button { flex: 1; margin-bottom: 0;}
+
+        .score-display { font-size: 60px; font-weight: 800; background: linear-gradient(135deg, var(--orange), #f59e0b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 10px 0; }
+        .custom-arabic-msg { font-size: 22px; font-weight: 800; color: var(--primary); margin-bottom: 15px; direction: rtl; }
+        
+        .stats { display: flex; justify-content: space-around; background: rgba(0,0,0,0.02); padding: 20px; border-radius: 16px; margin-bottom: 25px; }
+        .stats span { font-weight: 800; font-size: 16px; }
+        .stat-correct { color: var(--correct); }
+        .stat-wrong { color: var(--wrong); }
+
+        .review-list { text-align: left; max-height: 350px; overflow-y: auto; margin-bottom: 20px; padding-right: 5px; }
+        .review-item { background: rgba(255,255,255,0.7); border-left: 5px solid var(--wrong); padding: 15px; margin-bottom: 12px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+        .review-q { font-weight: 800; margin-bottom: 10px; color: var(--text-dark); }
+        .review-wrong { color: var(--wrong); font-size: 14px; margin-bottom: 5px; font-weight: 600;}
+        .review-correct { color: var(--correct); font-size: 14px; font-weight: 800; }
+        
+        .history-list { list-style: none; padding: 0; margin: 0; max-height: 350px; overflow-y: auto; text-align:left;}
+        .history-item { background: rgba(255,255,255,0.8); padding: 15px; margin-bottom: 10px; border-radius: 12px; border-left: 5px solid var(--primary); font-size: 15px; font-weight: 600; color: var(--text-dark); box-shadow: 0 4px 10px rgba(0,0,0,0.03);}
+        .history-item .hist-score { float: right; color: var(--orange); font-size: 18px; font-weight: 800;}
+
+        /* Custom Clear History Modal */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.4); z-index: 1000; justify-content: center; align-items: center;
+            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+        }
+        .modal-content {
+            background: rgba(255, 255, 255, 0.9); padding: 30px; border-radius: 24px;
+            width: 90%; max-width: 400px; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            animation: popIn 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .modal-content h3 { color: var(--text-dark); font-size: 20px; margin-top: 0; }
+        .modal-actions { display: flex; gap: 10px; justify-content: center; margin-top: 20px; }
+        .modal-actions button { padding: 12px 25px; border: none; border-radius: 12px; font-weight: 800; cursor: pointer; transition: 0.2s; font-family: inherit;}
+        .btn-cancel { background: rgba(148, 163, 184, 0.3); color: var(--text-dark); }
+        .btn-cancel:hover { background: rgba(148, 163, 184, 0.5); }
+        .btn-confirm { background: var(--wrong); color: white; }
+        .btn-confirm:hover { background: #b71c1c; }
+
+        .footer-quote { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.3); backdrop-filter: blur(10px); color: rgba(255,255,255,0.9); padding: 12px; text-align: center; font-size: 13px; font-style: italic; display: block; z-index: 50; }
+    </style>
+</head>
+<body>
+
+<div class="brand-watermark">✨ Best wishes ✨</div>
+
+<div class="glass-container">
+    <div class="context-wrapper">
+        <div class="context-header" id="context-header">🏠 HOME</div>
+        <div class="context-header history-pill" id="history-pill" onclick="showHistory()">⏳ HISTORY</div>
+    </div>
+    
+    <div id="screen-home" class="screen active">
+        <div class="instructions-box">
+            <h3>ℹ️ Instructions:</h3>
+            <ul>
+                <li>1️⃣ <strong>Course:</strong> Select the specialty you want to test.</li>
+                <li>2️⃣ <strong>Chapter:</strong> Choose a specific topic or a combined exam.</li>
+                <li>3️⃣ <strong>Mode:</strong> Sequential, Random, or Full Simulated Exam.</li>
+                <li>4️⃣ <strong>Results:</strong> Review your score, time, and mistakes.</li>
+            </ul>
+        </div>
+
+        <h1>📖 CHOOSE THE COURSE</h1>
+        <div class="grid-layout">
+            <button class="glass-btn" onclick="selectCategory('respiratory')">🩺 RESPIRATORY</button>
+            <button class="glass-btn" onclick="selectCategory('icu')">🏥 ICU</button>
+        </div>
+    </div>
+
+    <div id="screen-history" class="screen">
+        <h1>📜 EXAM HISTORY</h1>
+        <div id="history-content"></div>
+        <div class="grid-layout" style="margin-top: 20px;">
+            <button class="glass-btn" style="color: var(--wrong); border-color: rgba(239, 68, 68, 0.3);" onclick="openClearModal()">❌ Clear History</button>
+            <button class="glass-btn btn-back" onclick="showScreen('screen-home')">⬅️ Back</button>
+        </div>
+    </div>
+
+    <div id="screen-chapters" class="screen">
+        <h1>📖 SELECT CHAPTER</h1>
+        <div class="grid-layout" id="chapters-container"></div>
+        <button class="glass-btn btn-back" onclick="showScreen('screen-home')">⬅️ Back</button>
+    </div>
+
+    <div id="screen-setup" class="screen">
+        <h1>⚙️ SETUP MODE</h1>
+        <button class="glass-btn" onclick="startExam('sequential')">🔢 SEQUENTIAL ORDER</button>
+        <button class="glass-btn" onclick="startExam('random')">🔀 RANDOM ORDER</button>
+        <button class="glass-btn btn-action" onclick="startExam('simulated')">
+            🎖️ SIMULATED EXAM
+            <span style="display:block; font-size:13px; font-weight:normal; margin-top:4px;">Fast & Comprehensive</span>
+        </button>
+        <button class="glass-btn btn-back" onclick="showScreen('screen-chapters')">⬅️ Back</button>
+    </div>
+
+    <div id="screen-quiz" class="screen">
+        <div class="progress-container"><div class="progress-bar" id="progress-bar"></div></div>
+        
+        <div class="header-info">
+            <span id="question-tracker">Q 1/25</span>
+            <span id="timer" style="color: var(--orange);">⏱️ 00:00</span>
+            <button class="btn-exit" onclick="exitQuiz()">🚪 Exit</button>
+        </div>
+
+        <div id="standard-quiz-ui">
+            <div class="question-text" id="question-text"></div>
+            <div class="options-container" id="options-container"></div>
+            <div id="feedback-msg" class="feedback-msg"></div>
+            <div class="quiz-nav-buttons">
+                <button class="glass-btn btn-back" id="prev-btn" onclick="prevQuestion()" style="display:none;">⬅️ Back</button>
+                <button class="glass-btn btn-orange" id="next-btn" onclick="nextQuestion()" style="display:none;">Next ➡️</button>
+            </div>
+        </div>
+        <div id="simulated-quiz-ui" style="display: none; text-align: left;"></div>
+    </div>
+
+    <div id="screen-result" class="screen">
+        <h1>🏆 EXAM COMPLETED</h1>
+        <div class="score-display" id="final-score">80%</div>
+        <div class="custom-arabic-msg" id="custom-arabic-msg"></div>
+        <div class="time-stat" id="final-time">⏱️ Time Taken: 00:00</div>
+        
+        <div class="stats">
+            <span class="stat-correct" id="stat-correct">✔️ Correct: 0</span>
+            <span class="stat-wrong" id="stat-wrong">❌ Wrong: 0</span>
+        </div>
+        
+        <button class="glass-btn btn-action" id="btn-review" onclick="showReview()">🔍 REVIEW MISTAKES</button>
+        <button class="glass-btn" id="btn-again" onclick="restartExam()" style="display:none; color: var(--correct); border-color:var(--correct);">🔁 AGAIN</button>
+        <button class="glass-btn btn-back" onclick="goHome()">🏠 HOME PAGE</button>
+    </div>
+
+    <div id="screen-review" class="screen">
+        <h1>🔍 REVIEW MISTAKES</h1>
+        <div class="review-list" id="review-list"></div>
+        <button class="glass-btn btn-back" onclick="showScreen('screen-result')">⬅️ Back</button>
+        <button class="glass-btn btn-action" onclick="goHome()">🏠 HOME PAGE</button>
+    </div>
+</div>
+
+<div class="modal-overlay" id="confirm-modal">
+    <div class="modal-content">
+        <h3>🗑️ Are you sure you want to clear all history?</h3>
+        <p style="font-size:14px; color:var(--text-light); margin-bottom:20px;">This action cannot be undone.</p>
+        <div class="modal-actions">
+            <button class="btn-cancel" onclick="closeClearModal()">Cancel</button>
+            <button class="btn-confirm" onclick="executeClearHistory()">Yes, Clear</button>
+        </div>
+    </div>
+</div>
+
+<div class="footer-quote" id="main-footer-quote">
+    "The saddest aspect of life right now is that science gathers knowledge faster than society gathers wisdom."
+</div>
+
+<script>
+    // Database with SMART CRAMMING (No trailing dots)
+    const rawDB = [
+        {c:"potassium", n:1, q:"A patient has a potassium level of 9.0. Which of the following interventions is priority?", o:["Prepare the patient for dialysis and place the patient on a cardiac monitor","Administer Spironolactone","Place patient on a potassium restrictive diet","Administer a laxative"], a:0, k:"Severe Hyperkalemia (K=9.0) causes lethal arrhythmias ➔ Always prioritize Cardiac Monitoring & Dialysis immediately"},
+        {c:"potassium", n:2, q:"Which of the following is not a symptom of hyperkalemia?", o:["Positive Chvostek's sign","Decreased blood pressure","Muscle twitches/cramps","Weak and slow heart rate"], a:0, k:"Chvostek's sign indicates nerve hyperexcitability ➔ Classic for HypoCalcemia, NOT Hyperkalemia"},
+        {c:"potassium", n:3, q:"Tall peaked T waves, flat P waves, prolonged PR intervals and widened QRS complexes can present in which of the following conditions?", o:["Hypocalemia","Hypokalemia","Hypercalemia","Hyperkalemia"], a:3, k:"ECG changes in Hyperkalemia ➔ Progressive: Tall T waves -> Flat P -> Wide QRS -> Sine wave -> Asystole"},
+        {c:"potassium", n:4, q:"Which of the following patients is at risk for hyperkalemia?", o:["Patient with Addison's Disease","Patient with Cushing's Syndrome","Patient with Parathyroid cancer","Patient with breast cancer"], a:0, k:"Addison's Disease = Lack of Aldosterone ➔ Kidneys cannot excrete Potassium, leading to Hyperkalemia"},
+        {c:"potassium", n:5, q:"A patient's potassium level is 3.0. Which foods would you encourage the patient to consume?", o:["Avocados, Strawberries, and potatoes","Cheese, collard greens, and fish","Tofu, oatmeal, and peas","Peanuts, bread, and corn"], a:0, k:"Hypokalemia (K=3.0) diet management ➔ Avocados, Strawberries, Potatoes, Bananas, and Spinach are extremely rich in K+"},
+        {c:"potassium", n:6, q:"A patient with nasogastric suctioning is experiencing diarrhea. The patient is ordered a morning dose of Lasix 20mg IV. Patient's potassium level is 3.0. Which of the following options is correct?", o:["No intervention is need the potassium level is within normal range","Administered the Lasix and notify the doctor for further orders","Hold the dose of Lasix and notify the doctor for further orders","Turn off the nasogastric suctioning and administered a laxative"], a:2, k:"NG suction + Diarrhea = Huge K+ loss. Lasix (Loop Diuretic) wastes even more K+ ➔ Hold Lasix to prevent life-threatening Hypokalemia"},
+        {c:"potassium", n:7, q:"A patient is presenting with an orthostatic blood pressure of 80/40 when she stands up, thready and weak pulse of 58, and shallow respirations. In addition, the patient has been having frequent episodes of vomiting and nausea and is taking hydrochlorothiazide. Which of the following findings would explain the patient's condition?", o:["Potassium level of 7.0","Potassium level of 3.5","Potassium level of 2.4","None of the options are correct"], a:2, k:"Vomiting + HCTZ (Thiazide) = Severe K+ depletion ➔ Weak pulse and shallow breathing indicate critical Hypokalemia (2.4)"},
+        {c:"potassium", n:8, q:"Which patient is at a potential risk for Digoxin toxicity?", o:["Patient with a calcium level of 8.9","Patient with Cushing's syndrome taking Laxis 20 mg IV twice a day","Patient with a potassium level of 3.8","Patient presenting with painful muscle spasms and positive Trousseau's sign"], a:1, k:"Hypokalemia enhances Digoxin binding to Na/K ATPase ➔ Lasix + Cushing's (both lower K+) = High risk of Digoxin Toxicity"},
+        {c:"potassium", n:9, q:"Which of the following is indicative of an EKG change in a case of hypokalemia?", o:["Tall T waves and depressed ST segment","Prolonged ST interval and Widened T wave","ST depression and inverted T wave","Widened QRS complex and prolonged PR interval"], a:2, k:"Hypokalemia ECG ➔ ST depression, Inverted/flat T waves, and prominent U waves"},
+        {c:"potassium", n:10, q:"A patient has a potassium level of 2.0. Which of the following would you expect to be order for this patient?", o:["An oral supplement of potassium","Potassium 30 meq IV push","Infusion of Potassium intravenously","Intramuscular injection of Potassium"], a:2, k:"Critical Hypokalemia (2.0) requires IV Infusion. NEVER give Potassium as IV Push or IM (It causes instant cardiac arrest)"},
+        {c:"potassium", n:11, q:"A patient with a potassium level of 2.1 has been taking Lasix daily. Which medication will the patient most likely be switched to?", o:["Spironolactone","None the patient will likely stay on the Lasix","Hydrochlorothiazide","Demadex"], a:0, k:"Spironolactone is a K-sparing diuretic ➔ Ideal substitute when a patient on loop diuretics (Lasix) develops severe hypokalemia"},
+        {c:"potassium", n:12, q:"Which of the following ECG changes is a characteristic finding in a patient with Hypokalemia?", o:["Tall peaked T waves","Prominent U waves","Shortened PR interval","Absence of P waves"], a:1, k:"U waves represent delayed repolarization of Purkinje fibers ➔ Classic hallmark of Hypokalemia"},
+        {c:"potassium", n:13, q:"A patient with severe hyperkalemia is ordered IV insulin and D50 (Dextrose). What is the rationale for this intervention?", o:["To promote potassium excretion via the kidneys.","To protect the myocardium from cardiac arrest.","To shift potassium from the blood into the intracellular space.","To increase potassium absorption in the GI tract."], a:2, k:"Insulin drives Glucose AND Potassium into the cells rapidly ➔ D50 is given alongside to prevent hypoglycemia"},
+        {c:"potassium", n:14, q:"Which medical condition places a patient at risk for Hypokalemia?", o:["Cushing's Syndrome","Addison's Disease","Chronic Renal Failure","Diabetic Ketoacidosis (DKA) - Initial stage"], a:0, k:"Cushing's = Excess Cortisol (has mineralocorticoid effect) ➔ Retains Na+ and dumps K+ in urine, causing Hypokalemia"},
+        {c:"potassium", n:15, q:"What is the primary purpose of administering Calcium Gluconate to a patient with severe hyperkalemia?", o:["To lower the serum potassium levels.","To stabilize the cardiac membrane and prevent arrhythmias.","To bind with potassium in the intestines.","To stimulate the release of aldosterone."], a:1, k:"Calcium does NOT lower K+ levels ➔ It directly antagonizes the membrane excitability caused by high K+, protecting the heart"},
+        
+        {c:"sodium", n:1, q:"A patient has a sodium level of 123 and presents with confusion. The doctor diagnoses the patient with Syndrome of Inappropriate Antidiuretic Hormone Secretion (SIADH). Which type of hyponatremia is this?", o:["Hypovolemic","Euvolemic","Hypervolemic","Antivolemic"], a:1, k:"SIADH causes pure water retention without edema ➔ Total body water increases but Na+ mass is normal = Euvolemic Hyponatremia"},
+        {c:"sodium", n:2, q:"A patient with a sodium level of 112 is taking Lithium. Which of the following is a nursing priority?", o:["Hold further doses of Lithium","Monitor Lithium drug level due to risk of toxicity","Monitor potassium level due to increased risk of toxicity","No priority is need. 112 is a normal sodium level."], a:1, k:"Kidneys reabsorb Lithium along with Sodium. Hyponatremia (Na 112) forces kidneys to retain more Lithium ➔ High risk of Lithium Toxicity"},
+        {c:"sodium", n:3, q:"A patient with a sodium level of 178 is ordered to be started on 0.45% Saline. What is the most IMPORTANT nursing intervention for this patient?", o:["Maintain patent IV","Give rapidly to ensure fluids levels are shifted properly","Clarify doctor's order because 0.45% saline is contraindicated","Give slowly and watch for signs and symptoms of cerebral edema."], a:3, k:"Rapid correction of Hypernatremia pulls water into shrunken brain cells too fast ➔ Can cause deadly Cerebral Edema. Must give slowly"},
+        {c:"sodium", n:4, q:"You have completed diet teaching with a patient who has hypernatremia. Which statement by the patient causes concern?", o:["I will buy fresh vegetables and fruits.","I will avoid eating canned foods.","I'm glad I can still eat sandwiches with bologna.","I will avoid cooking with butter."], a:2, k:"Bologna and processed meats are extremely high in hidden salts ➔ Must be avoided in Hypernatremia"},
+        {c:"sodium", n:5, q:"A patient with Cushing's Syndrome has been experiencing an infection and has a fever of 102'F. On assessment, you find the patient to be confused, restless, has dry mucous membranes, and flushed skin. Which finding below correlates with the presentation of this patient?", o:["Sodium level of 144","Sodium level of 115","Sodium level of 170","Sodium level of 135"], a:2, k:"Fever + Dehydration + Cushing's (Retains Na+) ➔ Massive water loss relative to Na+ causing severe Hypernatremia (Na 170)"},
+        {c:"sodium", n:6, q:"Which patient below is considered hypernatremic?", o:["A patient with a sodium level of 155","A patient with a sodium level of 145","A patient with a sodium level of 120","A patient with a sodium level 125."], a:0, k:"Normal Serum Sodium is 135 - 145 mEq/L ➔ Anything above 145 is Hypernatremia"},
+        {c:"sodium", n:7, q:"A patient with a sodium level of 115 is ordered to start Declomycin. Which statement is NOT true about this medication?", o:["Declomycin is an antidiuretic hormone antagonist that treats SIADH.","Declomycin is part of the tetracycline family.","Declomycin is to be taken with food, preferably, milk.","Declomycin is contraindicated in children and pregnant/nursing women."], a:2, k:"Declomycin is a Tetracycline ➔ Calcium in milk binds to it and prevents its absorption. DO NOT take with milk"},
+        {c:"sodium", n:8, q:"A patient with hypovolemic hyponatremia is started on IV fluids. Which of the following fluids do you expect the patient to be started on?", o:["0.45% Saline","3% Saline","D5W","0.33% Saline"], a:1, k:"Hypovolemic Hyponatremia (Loss of both fluid and Na+, but Na+ loss is greater) ➔ Treated with Hypertonic 3% Saline to correct Na+ safely"},
+        {c:"sodium", n:9, q:"A patient has a sodium level of 119. Which of the following is NOT related to this finding?", o:["Over secretion of ADH","Low salt diet","Inadequate water intake","Hypotonic fluid infusion"], a:2, k:"Inadequate water intake causes the blood to become concentrated ➔ Leads to HYPERnatremia, not Hyponatremia"},
+        {c:"sodium", n:10, q:"Which patient below is at risk for experiencing Hypovolemic Hyponatremia?", o:["Patient with congestive heart failure","Patient with cirrhosis of the liver","Patient on IV saline at 250 cc/hr","Patient with nasogastric tube suction experiencing diarrhea"], a:3, k:"NG Suction + Diarrhea ➔ Massive loss of fluids and electrolytes (Na+ & K+) leading to Hypovolemic Hyponatremia"},
+        {c:"sodium", n:11, q:"A patient has a sodium level of 130. What is this condition called?", o:["Hyponatremia.","Hypernatremia.","Normal Sodium Level","Hypercalcemia"], a:0, k:"Normal Serum Sodium is 135 - 145. Level 130 = Hyponatremia"},
+        {c:"sodium", n:12, q:"A patient has Hypernatremia due to Diabetes Insipidus. Which IV fluid would the nurse expect to be ordered?", o:["3% Hypertonic Saline","0.45% Hypotonic Saline","Lactated Ringer's","25% Albumin"], a:1, k:"DI causes massive excretion of dilute urine ➔ Leaves blood hypertonic. Treat by replacing free water with Hypotonic Saline (0.45%)"},
+        {c:"sodium", n:13, q:"Which of the following is a classic clinical sign of Hypernatremia?", o:["Excessive thirst and a dry, swollen tongue.","Abdominal cramps and diarrhea.","Bradycardia (slow heart rate).","Decreased Central Venous Pressure (CVP)."], a:0, k:"High Sodium pulls water out of cells ➔ Intracellular dehydration causes intense thirst and dry, sticky mucous membranes"},
+        {c:"sodium", n:14, q:"Correcting hypernatremia too quickly can lead to which serious complication?", o:["Acute Renal Failure","Cerebral Edema","Cellular Dehydration","Hyperglycemia"], a:1, k:"Brain cells adapt to Hypernatremia. If fluid is replaced too fast, water rushes back into brain cells ➔ Fatal Cerebral Edema"},
+        
+        {c:"coagulants", n:1, q:"What is the main purpose of anticoagulant medications?", o:["They dissolve existing blood clots.","They stop the body from forming clots.","They increase the body's ability to form clots.","They reverse the effects of bleeding."], a:1, k:"Anticoagulants DO NOT dissolve existing clots (Thrombolytics do that) ➔ They only PREVENT new clots from forming or growing"},
+        {c:"coagulants", n:2, q:"Which of the following conditions is NOT a common use for anticoagulant medications?", o:["Deep vein thrombosis (DVT)","Pulmonary embolism","Stroke prevention in atrial fibrillation","Treating active bleeding"], a:3, k:"Active bleeding is an ABSOLUTE CONTRAINDICATION for anticoagulants ➔ It will worsen the hemorrhage"},
+        {c:"coagulants", n:3, q:"Which medication is an example of a low molecular weight heparin?", o:["Warfarin","Heparin","Enoxaparin","Rivaroxaban"], a:2, k:"EnoxaPARIN = Low Molecular Weight Heparin (LMWH) ➔ Preferred for outpatient DVT prophylaxis due to predictable pharmacokinetics"},
+        {c:"coagulants", n:4, q:"What is the most significant side effect of anticoagulant medications?", o:["Gastrointestinal upset","Bleeding and bruising","Hair loss","Fatigue"], a:1, k:"By preventing clot formation, any minor injury or internal lesion can bleed excessively ➔ Bleeding is the primary adverse effect"},
+        {c:"coagulants", n:5, q:"When monitoring a patient on heparin, which lab value is most important to track?", o:["Platelet count","PT/INR","PTT","Hemoglobin levels"], a:2, k:"Heparin blocks the Intrinsic pathway ➔ Monitored by aPTT (Activated Partial Thromboplastin Time). Warfarin uses PT/INR"},
+        {c:"coagulants", n:6, q:"Why should a nurse monitor a patient's complete blood count (CBC) while they are on anticoagulants?", o:["To detect changes in platelet count, as well as hemoglobin and hematocrit values that may indicate bleeding.","To check for allergic reactions to the medication.","To monitor for liver damage caused by the anticoagulant.","To evaluate kidney function."], a:0, k:"A sudden drop in Hemoglobin/Hematocrit in a patient on anticoagulants is a major red flag for occult internal bleeding"},
+        {c:"coagulants", n:7, q:"Which medication below is NOT a part of the anticoagulant class?", o:["Heparin","Warfarin","Rivaroxaban","Aspirin"], a:3, k:"Aspirin is an Anti-Platelet agent (stops platelets from clumping) ➔ It is NOT an Anticoagulant (which stops the clotting cascade)"},
+        {c:"coagulants", n:8, q:"Which anticoagulant directly inhibits thrombin (factor lla) by binding to its active site?", o:["Warfarin","Dabigatran","Rivaroxaban","Fondaparinux"], a:1, k:"DaBIGatran = Direct Thrombin (Factor IIa) Inhibitor. (Rivaroxaban targets Factor Xa)"},
+        {c:"coagulants", n:9, q:"Protamine sulfate is an effective antidote for which anticoagulant?", o:["Apixaban","Unfractionated heparin","Warfarin","Dabigatran"], a:1, k:"Protamine Sulfate is a highly positive molecule that binds and neutralizes the highly negative Heparin molecule"},
+        {c:"coagulants", n:10, q:"Which drug is a synthetic pentasaccharide that selectively inhibits factor Xa via antithrombin?", o:["Enoxaparin","Fondaparinux","Warfarin","Argatroban"], a:1, k:"Fondaparinux mimics the exact 5-sugar sequence of heparin that binds Antithrombin to selectively inhibit Factor Xa"},
+        {c:"coagulants", n:11, q:"What is the antidote for Warfarin (Coumadin)?", o:["Protamine Sulfate","Vitamin K","Glucagon","Naloxone"], a:1, k:"Warfarin inhibits Vitamin K Epoxide Reductase ➔ Antidote is giving Vitamin K to bypass the blockade and synthesize clotting factors"},
+        {c:"coagulants", n:12, q:"A patient on Warfarin should be educated to maintain a consistent intake of which food group?", o:["Red meats","Green leafy vegetables (e.g., Spinach)","Dairy products","Citrus fruits"], a:1, k:"Green leafy veggies are rich in Vitamin K. Sudden changes in intake will drastically alter Warfarin's efficacy (INR levels)"},
+        {c:"coagulants", n:13, q:"If a patient develops Heparin-Induced Thrombocytopenia (HIT), what is the nurse's priority action?", o:["Reduce the heparin dose by half.","Administer platelets immediately.","Discontinue all forms of heparin and notify the provider.","Switch the patient to Warfarin immediately."], a:2, k:"HIT is a severe immune reaction causing paradoxical clotting ➔ ALL Heparin must be stopped instantly. Use direct thrombin inhibitors instead"},
+
+        {c:"copd", n:1, q:"What is the primary cause of COPD?", o:["Smoking","Air pollution","Genetic predisposition","Infections"], a:0, k:"Cigarette smoking causes chronic inflammation and protease release ➔ Primary culprit in >85% of COPD cases"},
+        {c:"copd", n:2, q:"Which of the following is a characteristic feature of COPD?", o:["Reversible airflow limitation","Irreversible airflow limitation","Recurrent respiratory infections","Allergic reactions"], a:1, k:"Unlike Asthma (which is reversible), COPD involves permanent airway remodeling and alveolar destruction ➔ Irreversible limitation"},
+        {c:"copd", n:3, q:"What is the name of the test used to diagnose COPD?", o:["Spirometry","Chest X-ray","CT scan","Blood tests"], a:0, k:"Spirometry measures FEV1/FVC ratio ➔ A ratio < 0.70 post-bronchodilator confirms irreversible airflow obstruction in COPD"},
+        {c:"copd", n:4, q:"Which of the following is commonly used to treat COPD?", o:["Bronchodilators","Corticosteroids","Phosphodiesterase-4 inhibitors","All of the above"], a:3, k:"COPD Therapy is stepwise: Bronchodilators (Basis) -> Inhaled Corticosteroids (for severe) -> PDE-4 inhibitors (to reduce exacerbations)"},
+        {c:"copd", n:5, q:"A sudden worsening of symptoms in COPD patient name?", o:["Remission","Exacerbation","Relapse","Complication"], a:1, k:"Exacerbation = Acute event characterized by worsening dyspnea, cough, or sputum purulence requiring medication change"},
+        {c:"copd", n:6, q:"Which of the following is a common complication of COPD?", o:["Pneumonia","Heart failure","Lung cancer","All of the above"], a:3, k:"COPD leads to Cor Pulmonale (Right Heart Failure), frequent pneumonias, and shares smoking as a risk factor for Lung Cancer"},
+        {c:"copd", n:7, q:"Which surgical procedure that removing damaged lung tissue?", o:["Lung transplant","Lung volume reduction surgery","Bullectomy","Pneumonectomy"], a:1, k:"Lung Volume Reduction Surgery (LVRS) removes hyperinflated, useless emphysematous tissue to allow healthy lung to expand properly"},
+        {c:"copd", n:8, q:"Which of the following is a risk factor for developing COPD?", o:["Age","Family history","Environmental exposures","All of the above"], a:3, k:"Smoking is #1, but Alpha-1 Antitrypsin deficiency (Genetics), occupational dusts, and aging all contribute to COPD risk"},
+        {c:"copd", n:9, q:"What is the primary mechanism of airflow limitation in COPD?", o:["Bronchospasm","Airway inflammation","Airway remodeling","Mucus hypersecretion"], a:2, k:"Chronic inflammation leads to fibrosis and narrowing of small airways (Airway Remodeling) ➔ The main cause of fixed obstruction"},
+        {c:"copd", n:10, q:"Which of the following is a key feature of emphysema?", o:["Airway narrowing","Lung tissue destruction","Mucus hypersecretion","Bronchospasm"], a:1, k:"Emphysema is defined anatomically as the abnormal, permanent destruction of alveolar walls without obvious fibrosis"},
+        {c:"copd", n:11, q:"What is the name of the scale used to assess the severity of COPD?", o:["GOLD staging system","COPD Assessment Test (CAT)","Modified Medical Research Council (mMRC) dyspnea scale","All of the above"], a:3, k:"Modern COPD assessment combines FEV1 (GOLD), symptoms (CAT), and breathlessness severity (mMRC)"},
+        {c:"copd", n:12, q:"Which one is used to reduce exacerbations in COPD patients?", o:["Bronchodilators","Corticosteroids","Phosphodiesterase-4 inhibitors","Macrolide antibiotics"], a:3, k:"Macrolides (Azithromycin) have potent anti-inflammatory effects independent of their antibiotic action ➔ Proven to reduce COPD exacerbations"},
+        {c:"copd", n:13, q:"What is the name of the condition that occurs when COPD patients experience a sudden worsening of symptoms due to a respiratory infection?", o:["Chronic bronchitis","Emphysema","Acute exacerbation of COPD (AECOPD)","Allergic sinusitis"], a:2, k:"AECOPD is mainly triggered by viral or bacterial respiratory tract infections"},
+        {c:"copd", n:14, q:"Which one is a common comorbidity in COPD patients?", o:["Cardiovascular disease","Diabetes","Hypertension","All of the above"], a:3, k:"Systemic inflammation in COPD heavily promotes ischemic heart disease, metabolic syndrome, and hypertension"},
+        {c:"copd", n:15, q:"What is the benefit of pulmonary rehabilitation in COPD patients?", o:["Improved lung function","Increased exercise tolerance","Enhanced quality of life","All of the above"], a:3, k:"Rehab doesn't fix the lung, but conditions the muscles and heart ➔ Improves tolerance, reduces dyspnea, and boosts QoL"},
+        {c:"copd", n:16, q:"Which of the following is a common symptom of COPD?", o:["Chest pain","Coughing up blood","Shortness of breath","Wheezing"], a:2, k:"Progressive, persistent dyspnea (Shortness of breath) is the hallmark symptom that makes patients seek medical help"},
+        {c:"copd", n:17, q:"What is the name of the device used to deliver medication directly to the lungs in COPD patients?", o:["Inhaler","Nebulizer","Oxygen tank","Ventilator"], a:0, k:"Inhalers (MDI or DPI) target the lungs directly ➔ Maximizes bronchodilation while minimizing systemic side effects"},
+        {c:"copd", n:18, q:"Which of the following is a risk factor for developing COPD?", o:["Secondhand smoke exposure","Air pollution","Occupational exposures","All of the above"], a:3, k:"Any chronic inhalation of noxious particles or gases (Smoke, Biomass fuel, Silica dust) can trigger COPD"},
+        {c:"copd", n:19, q:"A decrease in oxygen levels in the blood in COPD means?", o:["Hypoxemia","Hypercapnia","Respiratory failure","Pulmonary embolism"], a:0, k:"Hypo (Low) + ox (Oxygen) + emia (Blood) = Hypoxemia. (Hypercapnia is high CO2)"},
+        {c:"copd", n:20, q:"Which of the following is the most common cause of death worldwide related to COPD by 2020?", o:["Cardiovascular disease","Respiratory failure","Lung cancer","Infectious complications"], a:1, k:"End-stage COPD leads to severe hypoxemia/hypercapnia ➔ Acute-on-chronic respiratory failure is the fatal endpoint"},
+        {c:"copd", n:21, q:"In patients with COPD, which measurement is the most useful to assess the severity of airflow limitation?", o:["FVC (Forced Vital Capacity)","FEV1 (Forced Expiratory Volume in 1 second)","TLC (Total Lung Capacity)","DLCO (Diffusing Capacity)"], a:1, k:"FEV1 % predicted is the gold standard (GOLD Criteria) to grade the severity of airway obstruction"},
+        {c:"copd", n:22, q:"What is the primary risk factor for the development of COPD in industrialized nations?", o:["Occupational dust","Air pollution","Cigarette smoking","Alpha-1 antitrypsin deficiency"], a:2, k:"In industrialized countries, Cigarette Smoking accounts for the vast majority of cases. (Biomass fuel is more common in developing nations)"},
+        {c:"copd", n:23, q:"Which of the following findings on a chest X-ray is most suggestive of emphysema?", o:["Flattening of the diaphragm","Increased lung markings","Pleural effusion","Lobar consolidation"], a:0, k:"Hyperinflation of lungs pushes the diaphragm down ➔ Flattened diaphragm is a classic X-ray sign of Emphysema"},
+        {c:"copd", n:24, q:"Which therapy has been shown to improve survival in patients with COPD and chronic hypoxemia?", o:["Inhaled corticosteroids","Long-acting beta-agonists","Long-term oxygen therapy","Theophylline"], a:2, k:"Only two things improve SURVIVAL in COPD: Smoking Cessation and Long-Term Oxygen Therapy (LTOT >15 hrs/day)"},
+        {c:"copd", n:25, q:"The most common symptom in patients with COPD is:", o:["Chest pain","Hemoptysis","Exertional dyspnea","Night sweats"], a:2, k:"Exertional dyspnea (breathlessness upon moving/walking) is the earliest and most disabling symptom of COPD"},
+
+        {c:"cf", n:26, q:"The median survival for patients with CF is about?", o:["27 years","37 years","47 years","57 years"], a:2, k:"Thanks to modern treatments (Enzyme replacement, CFTR modulators), median survival has reached the late 40s"},
+        {c:"cf", n:27, q:"CF is characterized by?", o:["Bronchiolectasis","Exocrine pancreatic insufficiency","Intestinal dysfunction","All of the above"], a:3, k:"Defective CFTR affects all exocrine glands ➔ Thick mucus causes lung damage, blocks pancreatic enzymes, and clogs intestines"},
+        {c:"cf", n:28, q:"Cystic fibrosis (CF) is characterized by all EXCEPT?", o:["Polygenic disorder","Autosomal recessive","Bronchiolectasis","Exocrine pancreatic insufficiency"], a:0, k:"CF is a MONOGENIC disorder (caused by mutation in ONE gene: CFTR), not polygenic"},
+        {c:"cf", n:29, q:"CFTR stands for?", o:["CF transmembrane resistance regulator","CF transmembrane conductance regulator","CF transport regulator","CF transcription regulator"], a:1, k:"Conductance Regulator ➔ Because it acts as an ion channel that conducts Chloride across the cell membrane"},
+        {c:"cf", n:30, q:"CFTR gene is located on chromosome?", o:["4","7","12","13"], a:1, k:"Remember: CF = 2 letters, TR = 2 letters. CFTR is on chromosome lucky number 7"},
+        {c:"cf", n:31, q:"Which class of CF is least severe?", o:["I","II","III","IV"], a:3, k:"Class I, II, III are severe (no protein or no function). Class IV (Defective conduction) still allows some chloride flow = Mildest"},
+        {c:"cf", n:32, q:"Which of the following is abnormal in Class IV CFTR gene mutation?", o:["Defective protein synthesis","Defective processing","Defective regulation","Defective conduction"], a:3, k:"Class IV = The door is at the membrane, but the hole is too narrow ➔ Defective Conduction"},
+        {c:"cf", n:33, q:"The most common mutation in CF is termed as?", o:["ΔF508","N1303K","G85E","G91R"], a:0, k:"ΔF508 (Deletion of Phenylalanine at position 508) accounts for ~70% of all CF cases worldwide"},
+        {c:"cf", n:34, q:"CF patients homozygous for ΔF508 have normal sweat electrolytes in the presence of which second mutation?", o:["R553Q","R554Q","R555Q","R556Q"], a:0, k:"R553Q is a rare secondary mutation that can partially rescue the severe ΔF508 defect, normalizing sweat chloride"},
+        {c:"cf", n:35, q:"The CFTR protein contains how many amino acids?", o:["1280","1380","1480","1580"], a:2, k:"The complete CFTR polypeptide chain is exactly 1480 amino acids long"},
+        {c:"cf", n:36, q:"Fully processed form of CFTR is found in?", o:["Plasma membrane","Nuclear membrane","Cytoplasm","Rough endoplasmic reticulum"], a:0, k:"CFTR is a transmembrane channel ➔ Its final, functional destination is the apical Plasma Membrane of epithelial cells"},
+        {c:"cf", n:37, q:"Cellular function ascribed to CFTR is?", o:["Conducts chloride across cell membrane","Down-regulates transepithelial sodium transport (ENaC)","Regulates Ca++-activated chloride & K+ channels","All of the above"], a:3, k:"CFTR is a master regulator: It pumps Cl- OUT, stops Na+ from coming IN (inhibits ENaC), and controls other channels"},
+        {c:"cf", n:38, q:"Diagnostic biophysical hallmark of CF airway epithelia is?", o:["Lowered transepithelial electric potential difference","Raised transepithelial electric potential difference","Plasma membrane fenestration","Plasma membrane rigidity"], a:1, k:"Na+ hyperabsorption (since CFTR isn't inhibiting ENaC) makes the intracellular space very positive ➔ Raised nasal potential difference"},
+        {c:"cf", n:39, q:"Cystic fibrosis (CF) is characterized by all EXCEPT?", o:["Increased airway Na+ absorption","Increased airway Cl- secretion","Reduced salt & water content of mucus","Decreased volume of periciliary liquid"], a:1, k:"CF is characterized by DECREASED (defective) Cl- secretion, not increased. This is the core pathology"},
+        {c:"cf", n:40, q:"In a normal cell, CFTR is synthesized in?", o:["Golgi apparatus","Rough endoplasmic reticulum","Mitochondria","Nucleus"], a:1, k:"Like all membrane-bound proteins, CFTR is synthesized by ribosomes attached to the Rough ER"},
+        {c:"cf", n:41, q:"Which of the following is best related to airway surfaces in CF?", o:["Edematous","Atrophic","Hypertrophic","Dehydrated"], a:3, k:"Cl- stays in cell -> Na+ rushes into cell -> Water follows Na+ into cell ➔ The airway surface becomes completely DEHYDRATED"},
+        {c:"cf", n:42, q:"Which of the following is mostly infected in CF?", o:["Mucus layer","Epithelia","Airway wall","All of the above"], a:0, k:"The thick, stagnant, hypoxic Mucus Layer becomes a perfect breeding ground for chronic bacterial biofilms"},
+        {c:"cf", n:43, q:"Which of the following is FALSE about the mucus layer in CF airways?", o:["Mucus stasis","Mucus hypoxemia","Mucus dehydration","All of the above (none are false)"], a:3, k:"CF mucus is static (doesn't move), dehydrated (no water), and hypoxic (bacteria consume O2) ➔ None are false"},
+        {c:"cf", n:44, q:"CF airways are predisposed to chronic infection by?", o:["Staphylococcus aureus","Pseudomonas aeruginosa","Strict anaerobes","All of the above"], a:3, k:"S. aureus is common early on, P. aeruginosa dominates in adults, and anaerobes thrive in the hypoxic mucus plugs"},
+        {c:"cf", n:45, q:"CF patients fail to secrete which of the following in the pancreatic duct?", o:["Na+","HCO3-","Water","All of the above"], a:1, k:"CFTR also transports Bicarbonate (HCO3-) in the pancreas. Failure leads to acidic, thick secretions blocking enzymes"},
+        {c:"cf", n:46, q:"Cholelithiasis occurs with increased frequency in?", o:["Cystic fibrosis (CF)","Crohn's disease (CD)","Wilson Disease","All of the above"], a:3, k:"Bile stasis (CF), altered bile acid absorption (CD), and hepatic dysfunction (Wilson) all lead to gallstones"},
+        {c:"cf", n:47, q:"The diagnostic hallmark for Cystic Fibrosis in the sweat test is a chloride concentration greater than:", o:["20 mEq/L","40 mEq/L","60 mEq/L","80 mEq/L"], a:2, k:"Sweat Chloride > 60 mEq/L on two separate occasions is the definitive diagnostic criteria for CF"},
+        {c:"cf", n:48, q:"Cystic Fibrosis is caused by a mutation in the CFTR gene located on which chromosome?", o:["Chromosome 4","Chromosome 7","Chromosome 11","Chromosome X"], a:1, k:"Again, CFTR gene is strictly mapped to the long arm of Chromosome 7"},
+        {c:"cf", n:49, q:"Which of the following is the most common pathogen causing chronic lung infection in adult patients with CF?", o:["Staphylococcus aureus","Haemophilus influenzae","Pseudomonas aeruginosa","Burkholderia cepacia"], a:2, k:"While S. aureus is common in childhood, Pseudomonas aeruginosa becomes the dominant, chronic, mucoid pathogen in adulthood"},
+        {c:"cf", n:50, q:"CFTR protein functions primarily as a:", o:["Sodium channel","Potassium channel","Chloride channel","Calcium channel"], a:2, k:"CFTR = Cystic Fibrosis Transmembrane Conductance Regulator ➔ It is fundamentally an ATP-gated Chloride Channel"},
+        {c:"cf", n:51, q:"Which organ system is most commonly affected by Cystic Fibrosis besides the respiratory system?", o:["Cardiovascular system","Gastrointestinal/Pancreas","Central nervous system","Musculoskeletal system"], a:1, k:"GI tract (Meconium ileus) and Pancreas (Exocrine insufficiency leading to malabsorption) are the 2nd most affected systems"},
+        {c:"cf", n:52, q:"The median survival for patients with CF has significantly improved and is now estimated to be in the:", o:["20s","30s","40s/50s","60s"], a:2, k:"Modern aggressive therapies have extended the median survival from childhood into the late 40s and early 50s"}
+    ];
+
+    const STORAGE_HISTORY = 'ias_icu_history';
+
+    let currentCategory = "";
+    let selectedChapter = "";
+    let currentQuestions = [];
+    let currentQuestionIndex = 0;
+    let userAnswers = []; 
+    let timerInterval;
+    let totalSeconds = 0;
+    let isSimulated = false;
+    let lastOrderType = ''; 
+
+    window.onload = () => {
+        showScreen('screen-home');
+    };
+
+    function updateContextHeader(screenId) {
+        const el = document.getElementById('context-header');
+        const histPill = document.getElementById('history-pill');
+        let chapText = selectedChapter.toUpperCase();
+        if(chapText && !chapText.includes('ALL')) chapText = 'CHAPTER: ' + chapText;
+
+        if (screenId === 'screen-home') {
+            el.innerText = "🏠 HOME";
+            histPill.style.display = 'inline-block';
+        } else {
+            histPill.style.display = 'none';
+            if (screenId === 'screen-history') el.innerText = "📜 HISTORY";
+            else if (screenId === 'screen-chapters') el.innerText = `📁 COURSE: ${currentCategory.toUpperCase()}`;
+            else if (screenId === 'screen-setup') el.innerText = `📖 ${chapText}`;
+            else if (screenId === 'screen-quiz') el.innerText = `📝 ${chapText} - ${lastOrderType.toUpperCase()} MODE`;
+            else if (screenId === 'screen-result') el.innerText = `🏆 RESULTS: ${chapText}`;
+            else if (screenId === 'screen-review') el.innerText = `🔍 REVIEW: ${chapText}`;
+        }
+    }
+
+    function showScreen(screenId) {
+        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+        document.getElementById(screenId).classList.add('active');
+        updateContextHeader(screenId);
+        document.getElementById('main-footer-quote').style.display = (screenId === 'screen-home') ? 'block' : 'none';
+    }
+
+    function showHistory() {
+        showScreen('screen-history');
+        const hist = JSON.parse(localStorage.getItem(STORAGE_HISTORY) || '[]');
+        const content = document.getElementById('history-content');
+        if(hist.length === 0) {
+            content.innerHTML = '<p style="color:var(--text-light); font-weight:800; font-size:18px;">No history available yet.</p>';
+        } else {
+            content.innerHTML = '<ul class="history-list">' + hist.map(h => `<li class="history-item">${h.title} <br><span style="font-size:13px;color:#7f8c8d;">${h.date} | ⏱️ ${h.time}</span> <span class="hist-score">${h.score}</span></li>`).join('') + '</ul>';
+        }
+    }
+
+    // Modal Functions for Clearing History
+    function openClearModal() { document.getElementById('confirm-modal').style.display = 'flex'; }
+    function closeClearModal() { document.getElementById('confirm-modal').style.display = 'none'; }
+    function executeClearHistory() {
+        localStorage.removeItem(STORAGE_HISTORY);
+        closeClearModal();
+        showHistory();
+    }
+
+    function saveHistory(score, time) {
+        let hist = JSON.parse(localStorage.getItem(STORAGE_HISTORY) || '[]');
+        let chapText = selectedChapter.toUpperCase();
+        if(!chapText.includes('ALL')) chapText = 'Chapter: ' + chapText;
+        let title = chapText + " (" + lastOrderType.toUpperCase() + ")";
+        let date = new Date().toLocaleDateString();
+        hist.unshift({ title, score, time, date });
+        if(hist.length > 10) hist.pop();
+        localStorage.setItem(STORAGE_HISTORY, JSON.stringify(hist));
+    }
+
+    function goHome() { clearInterval(timerInterval); showScreen('screen-home'); }
+    function exitQuiz() { clearInterval(timerInterval); showScreen('screen-setup'); }
+
+    function selectCategory(cat) {
+        currentCategory = cat;
+        const chaptersContainer = document.getElementById('chapters-container');
+        chaptersContainer.innerHTML = '';
+
+        if (cat === 'icu') {
+            addChapterBtn('Potassium (K+)', 'potassium');
+            addChapterBtn('Sodium (Na+)', 'sodium');
+            addChapterBtn('Coagulants', 'coagulants');
+            addChapterBtn('ALL COMBINED 🧩', 'all_icu');
+        } else {
+            addChapterBtn('COPD 🩺', 'copd');
+            addChapterBtn('Cystic Fibrosis (CF) 🧬', 'cf');
+            addChapterBtn('ALL COMBINED 🧩', 'all_resp');
+        }
+        showScreen('screen-chapters');
+    }
+
+    function addChapterBtn(title, val) {
+        const btn = document.createElement('button');
+        btn.className = val.startsWith('all') ? 'glass-btn btn-orange' : 'glass-btn';
+        btn.innerHTML = title; 
+        btn.onclick = () => { selectedChapter = val; showScreen('screen-setup'); };
+        document.getElementById('chapters-container').appendChild(btn);
+    }
+
+    function startTimer() {
+        clearInterval(timerInterval);
+        const updateTimerUI = () => {
+            const m = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
+            const s = (totalSeconds % 60).toString().padStart(2, '0');
+            document.getElementById('timer').innerHTML = `⏱️ ${m}:${s}`;
+        };
+        updateTimerUI();
+        timerInterval = setInterval(() => { totalSeconds++; updateTimerUI(); }, 1000);
+    }
+
+    function startExam(orderType) {
+        lastOrderType = orderType; 
+        if (selectedChapter === 'all_icu') currentQuestions = rawDB.filter(q => ['potassium', 'sodium', 'coagulants'].includes(q.c));
+        else if (selectedChapter === 'all_resp') currentQuestions = rawDB.filter(q => ['copd', 'cf'].includes(q.c));
+        else currentQuestions = rawDB.filter(q => q.c === selectedChapter);
+
+        if(orderType === 'random' || orderType === 'simulated') shuffleArray(currentQuestions); 
+        
+        userAnswers = new Array(currentQuestions.length).fill(null);
+        totalSeconds = 0;
+        showScreen('screen-quiz');
+        startTimer();
+
+        if(orderType === 'simulated') {
+            isSimulated = true;
+            document.getElementById('standard-quiz-ui').style.display = 'none';
+            document.getElementById('simulated-quiz-ui').style.display = 'block';
+            document.getElementById('question-tracker').style.display = 'none';
+            renderSimulatedExam();
+        } else {
+            isSimulated = false;
+            document.getElementById('simulated-quiz-ui').style.display = 'none';
+            document.getElementById('standard-quiz-ui').style.display = 'block';
+            document.getElementById('question-tracker').style.display = 'inline';
+            currentQuestionIndex = 0;
+            loadStandardQuestion();
+        }
+    }
+
+    function restartExam() { startExam(lastOrderType); }
+
+    function loadStandardQuestion() {
+        document.getElementById('next-btn').style.display = 'none';
+        document.getElementById('feedback-msg').style.display = 'none';
+        document.getElementById('prev-btn').style.display = (currentQuestionIndex > 0) ? 'block' : 'none';
+        
+        const qData = currentQuestions[currentQuestionIndex];
+        document.getElementById('question-tracker').innerHTML = `Q ${currentQuestionIndex + 1}/${currentQuestions.length}`;
+        document.getElementById('progress-bar').style.width = ((currentQuestionIndex) / currentQuestions.length) * 100 + "%";
+        document.getElementById('question-text').innerText = qData.q;
+        
+        const optionsContainer = document.getElementById('options-container'); optionsContainer.innerHTML = ''; 
+        const previousAnswer = userAnswers[currentQuestionIndex];
+
+        qData.o.forEach((optText, index) => {
+            const btn = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.innerText = `${String.fromCharCode(65 + index)}) ${optText}`;
+            if (previousAnswer !== null) {
+                btn.disabled = true;
+                if (index === qData.a) btn.classList.add('correct');
+                else if (index === previousAnswer) btn.classList.add('wrong');
+            } else btn.onclick = () => checkStandardAnswer(index, btn, qData);
+            optionsContainer.appendChild(btn);
+        });
+
+        if (previousAnswer !== null) {
+            showFeedback('feedback-msg', previousAnswer === qData.a, qData.k);
+            document.getElementById('next-btn').style.display = 'block';
+        }
+    }
+
+    function checkStandardAnswer(selectedIndex, btnClicked, qData) {
+        userAnswers[currentQuestionIndex] = selectedIndex; 
+        const allButtons = document.getElementById('options-container').querySelectorAll('.option-btn');
+        allButtons.forEach(btn => btn.disabled = true);
+        if (selectedIndex === qData.a) { btnClicked.classList.add('correct'); showFeedback('feedback-msg', true, qData.k); } 
+        else { btnClicked.classList.add('wrong'); allButtons[qData.a].classList.add('correct'); showFeedback('feedback-msg', false, qData.k); }
+        document.getElementById('next-btn').style.display = 'block';
+    }
+
+    function nextQuestion() {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < currentQuestions.length) { loadStandardQuestion(); } 
+        else endExam();
+    }
+
+    function prevQuestion() {
+        if (currentQuestionIndex > 0) { currentQuestionIndex--; loadStandardQuestion(); }
+    }
+
+    function renderSimulatedExam() {
+        const simContainer = document.getElementById('simulated-quiz-ui'); simContainer.innerHTML = '';
+        let answeredCount = 0;
+
+        currentQuestions.forEach((qData, qIndex) => {
+            const qBlock = document.createElement('div'); qBlock.className = 'sim-question-block';
+            const qTitle = document.createElement('div'); qTitle.className = 'question-text';
+            qTitle.innerText = `Q ${qIndex + 1}/${currentQuestions.length}: ${qData.q}`;
+            qBlock.appendChild(qTitle);
+
+            const optsDiv = document.createElement('div'); optsDiv.className = 'options-container';
+            const fbDiv = document.createElement('div'); fbDiv.className = 'feedback-msg'; fbDiv.id = `fb-sim-${qIndex}`;
+
+            const prevAns = userAnswers[qIndex];
+            if(prevAns !== null) answeredCount++;
+
+            qData.o.forEach((optText, optIndex) => {
+                const btn = document.createElement('button'); btn.className = 'option-btn';
+                btn.innerText = `${String.fromCharCode(65 + optIndex)}) ${optText}`;
+                if (prevAns !== null) {
+                    btn.disabled = true;
+                    if (optIndex === qData.a) btn.classList.add('correct');
+                    else if (optIndex === prevAns) btn.classList.add('wrong');
+                } else btn.onclick = () => checkSimulatedAnswer(qIndex, optIndex, btn, qData, optsDiv, fbDiv);
+                optsDiv.appendChild(btn);
+            });
+
+            qBlock.appendChild(optsDiv); qBlock.appendChild(fbDiv);
+            simContainer.appendChild(qBlock);
+            if(prevAns !== null) showFeedback(fbDiv.id, prevAns === qData.a, qData.k);
+        });
+
+        document.getElementById('progress-bar').style.width = (answeredCount / currentQuestions.length) * 100 + "%";
+
+        const finishBtn = document.createElement('button');
+        finishBtn.className = 'glass-btn btn-orange';
+        finishBtn.innerHTML = '✅ Finish Exam';
+        finishBtn.onclick = endExam;
+        simContainer.appendChild(finishBtn);
+    }
+
+    function checkSimulatedAnswer(qIndex, optIndex, btnClicked, qData, optsDiv, fbDiv) {
+        if(userAnswers[qIndex] !== null) return; 
+        userAnswers[qIndex] = optIndex; 
+        const allButtons = optsDiv.querySelectorAll('.option-btn');
+        allButtons.forEach(btn => btn.disabled = true);
+        if (optIndex === qData.a) { btnClicked.classList.add('correct'); showFeedback(fbDiv.id, true, qData.k); } 
+        else { btnClicked.classList.add('wrong'); allButtons[qData.a].classList.add('correct'); showFeedback(fbDiv.id, false, qData.k); }
+        
+        const answeredCount = userAnswers.filter(ans => ans !== null).length;
+        document.getElementById('progress-bar').style.width = (answeredCount / currentQuestions.length) * 100 + "%";
+    }
+
+    function showFeedback(divId, isCorrect, keyword) {
+        const fbDiv = document.getElementById(divId);
+        fbDiv.style.display = 'block';
+        if (isCorrect) {
+            fbDiv.innerHTML = "Well done handsome 💙";
+            fbDiv.className = "feedback-msg msg-correct";
+        } else {
+            fbDiv.innerHTML = `Better luck next time 🥲<br><span class="keyword-box">Cramming ✔️ : ${keyword}</span>`;
+            fbDiv.className = "feedback-msg msg-wrong";
+        }
+    }
+
+    function endExam() {
+        clearInterval(timerInterval);
+        document.getElementById('progress-bar').style.width = "100%";
+        
+        let correctCount = 0, wrongCount = 0, wrongAnswersData = [];
+
+        userAnswers.forEach((ans, idx) => {
+            if (ans !== null && ans === currentQuestions[idx].a) {
+                correctCount++;
+            } else {
+                wrongCount++;
+                const correctLetter = String.fromCharCode(65 + currentQuestions[idx].a);
+                let userStr = "No Answer";
+                if(ans !== null) userStr = `${String.fromCharCode(65 + ans)}) ${currentQuestions[idx].o[ans]}`;
+                wrongAnswersData.push({ 
+                    qNum: idx + 1, 
+                    qData: currentQuestions[idx], 
+                    userAns: userStr, 
+                    correctAns: `${correctLetter}) ${currentQuestions[idx].o[currentQuestions[idx].a]}` 
+                });
+            }
+        });
+
+        window.currentWrongAnswers = wrongAnswersData;
+        const percentage = Math.round((correctCount / currentQuestions.length) * 100) || 0;
+        const m = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
+        const s = (totalSeconds % 60).toString().padStart(2, '0');
+        const timeStr = `${m}:${s}`;
+
+        saveHistory(percentage + "%", timeStr);
+
+        setTimeout(() => {
+            showScreen('screen-result');
+            document.getElementById('final-score').innerText = `${percentage}%`;
+            
+            const arabicMsgDiv = document.getElementById('custom-arabic-msg');
+            const btnAgain = document.getElementById('btn-again');
+
+            if (percentage === 100) {
+                arabicMsgDiv.innerText = "واو بجد تحفه اوي 🤯";
+                btnAgain.style.display = 'none'; 
+            } else if (percentage >= 50) {
+                arabicMsgDiv.innerText = "مبروووك يا بطل 💪 ممكن تعيد تاني!";
+                btnAgain.style.display = 'block'; 
+            } else {
+                arabicMsgDiv.innerText = "محتاج تجرب تاني يا معلم 🥲";
+                btnAgain.style.display = 'block'; 
+            }
+
+            document.getElementById('final-time').innerHTML = `⏱️ Time Taken: ${timeStr}`;
+            document.getElementById('stat-correct').innerHTML = `✔️ Correct: ${correctCount}`;
+            document.getElementById('stat-wrong').innerHTML = `❌ Wrong: ${wrongCount}`;
+            document.getElementById('btn-review').style.display = (wrongCount === 0) ? 'none' : 'block'; 
+        }, 300);
+    }
+
+    function showReview() {
+        showScreen('screen-review');
+        const reviewList = document.getElementById('review-list');
+        reviewList.innerHTML = '';
+        window.currentWrongAnswers.forEach((item) => {
+            const div = document.createElement('div');
+            div.className = 'review-item';
+            div.innerHTML = `<div class="review-q">Q${item.qNum}: ${item.qData.q}</div><div class="review-wrong">❌ Yours: ${item.userAns}</div><div class="review-correct">✔️ Correct: ${item.correctAns}</div><div style="margin-top:10px; color:var(--primary); font-weight:800; font-size:15px; direction:rtl;">Cramming ✔️ : ${item.qData.k}</div>`;
+            reviewList.appendChild(div);
+        });
+    }
+
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+</script>
+</body>
+</html>
